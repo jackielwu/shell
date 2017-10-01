@@ -428,3 +428,8 @@ nothing to commit, working directory clean
 [master 4affb07] Commit
  2 files changed, 5 insertions(+), 1 deletion(-)
 Your branch is up-to-date with 'origin/master'.
+[master 2d30d62] Commit
+ 1 file changed, 1 insertion(+)
+M	.local.git.out
+M	shell.l
+Your branch is up-to-date with 'origin/master'.
