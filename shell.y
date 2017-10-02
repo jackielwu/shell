@@ -104,31 +104,31 @@ pipe_list:
 
 iomodifier_opt:
   GREAT WORD {
-    printf("   Great Word Yacc: insert output \"%s\"\n", $2);
+    //printf("   Great Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup($2);
     Command::_currentCommand._outCounter++;
   }
   | GREATGREAT WORD {
-    printf("   Great Great Word Yacc: insert output \"%s\"\n", $2);
+    //printf("   Great Great Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup($2);
     Command::_currentCommand._append = 1;
     Command::_currentCommand._outCounter++;
   }
   | GREATAMPERSAND WORD {
-    printf("   Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
+    //printf("   Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup($2);
     Command::_currentCommand._errFile = strdup($2);
     Command::_currentCommand._outCounter++;
   }
   | GREATGREATAMPERSAND WORD {
-    printf("   Great Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
+    //printf("   Great Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup($2);
     Command::_currentCommand._errFile = strdup($2);
     Command::_currentCommand._outCounter++;
     Command::_currentCommand._append = 1;
   }
   | LESS WORD {
-    printf("   Less Word Yacc: insert output \"%s\"\n", $2);
+    //printf("   Less Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._inFile = strdup($2);
     Command::_currentCommand._inCounter++;
   }
