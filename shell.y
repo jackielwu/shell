@@ -72,7 +72,7 @@ simple_command:
 command_and_args:
   command_word argument_list {
     Command::_currentCommand.
-    insertSimpleCommand( Command::_currentSimpleCommand );
+      insertSimpleCommand( Command::_currentSimpleCommand );
   }
   ;
 
