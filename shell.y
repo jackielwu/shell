@@ -116,7 +116,7 @@ iomodifier_opt:
   }
   | GREATAMPERSAND WORD {
     printf("   Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
-    Command::_currentCommand._outfile = strdup($2);
+    Command::_currentCommand._outFile = strdup($2);
     Command::_currentCommand._errFile = strdup($2);
     Command::_currentCommand._outCounter++;
   }
