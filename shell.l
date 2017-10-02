@@ -42,6 +42,10 @@ void myunputc(int c) {
   return GREATAMPERSAND;
 }
 
+"2>" {
+  return TWOGREAT;
+}
+
 ">" {
   return GREAT;
 }

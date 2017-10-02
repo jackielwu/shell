@@ -28,7 +28,7 @@
 }
 
 %token <string_val> WORD
-%token NOTOKEN GREAT NEWLINE GREATGREATAMPERSAND GREATGREAT GREATAMPERSAND AMPERSAND PIPE LESS
+%token NOTOKEN GREAT NEWLINE GREATGREATAMPERSAND GREATGREAT GREATAMPERSAND AMPERSAND PIPE LESS TWOGREAT
 
 %{
 //#define yylex yylex
@@ -131,6 +131,10 @@ iomodifier_opt:
     //printf("   Less Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._inFile = strdup($2);
     Command::_currentCommand._inCounter++;
+  }
+  | TWOGREAT {
+    Command::_currentCommand._errFile = strdup($2);
+    Command::_currentCommand._outCounter++;
   }
   ;
 

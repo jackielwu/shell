@@ -564,3 +564,10 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	command.cc
 Your branch is up-to-date with 'origin/master'.
+[master 825117f] Commit
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+M	.local.git.out
+M	shell.l
+M	shell.y
+M	test-shell/testall.out
+Your branch is up-to-date with 'origin/master'.
