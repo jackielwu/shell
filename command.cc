@@ -114,8 +114,27 @@ void Command::execute() {
 	print();
 
 	// Add execution here
-	// For every simple command fork a new process
-	// Setup i/o redirection
+	int ret;
+  
+  // For every simple command fork a new process
+	for ( int i = 0; i < _numberOfSimpleCommands; i++) {
+    ret = fork();
+    if ( ret == 0) {
+      //child
+      execvp(sCom[i]->args[0], sCom[i]->args);
+      perror("execvp");
+      _exit(1);
+    }
+    else if (ret < 0) {
+      perror("fork");
+      return;
+    }
+    //Parent shell continue
+  }
+  if (!background) {
+    waitpid(ret, NULL);
+  }
+  // Setup i/o redirection
 	// and call exec
 
 	// Clear to prepare for next command
