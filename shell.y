@@ -105,8 +105,8 @@ pipe_list:
 iomodifier_opt:
   GREAT WORD {
     printf("   Great Word Yacc: insert output \"%s\"\n", $2);
-    Command::_currentCommand._outFile = strdup($2);
-    Command::_currentCommand._outCounter++;
+    Command::_currentSimpleCommand._outFile = strdup($2);
+    Command::_currentSimpleCommand._outCounter++;
   }
   | GREATGREAT WORD {
     printf("   Great Great Word Yacc: insert output \"%s\"\n", $2);
