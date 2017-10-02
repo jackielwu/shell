@@ -144,7 +144,7 @@ void Command::execute() {
     if (_append) {
       fderr = open(_errFile, O_WRONLY | O_CREAT | O_APPEND, 0660);
     } else {
-      fderr = open(_errFile, O_WRONLY | O_CREAT | O_TRUNC, 0660);
+      fderr = open(_errFile, O_WRONLY | O_CREAT | O_APPEND, 0660);
     }
   } else {
     fderr = dup(tmperr);
