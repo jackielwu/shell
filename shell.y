@@ -132,7 +132,7 @@ iomodifier_opt:
     Command::_currentCommand._inFile = strdup($2);
     Command::_currentCommand._inCounter++;
   }
-  | TWOGREAT {
+  | TWOGREAT WORD {
     Command::_currentCommand._errFile = strdup($2);
     Command::_currentCommand._outCounter++;
   }

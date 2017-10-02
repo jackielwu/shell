@@ -571,3 +571,8 @@ M	shell.l
 M	shell.y
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+[master 3822185] Commit
+ 4 files changed, 17 insertions(+), 2 deletions(-)
+M	.local.git.out
+M	shell.y
+Your branch is up-to-date with 'origin/master'.
