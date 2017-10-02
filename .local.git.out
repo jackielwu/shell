@@ -549,3 +549,8 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	command.cc
 Your branch is up-to-date with 'origin/master'.
+[master 7ab1e29] Commit
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+M	.local.git.out
+M	shell.y
+Your branch is up-to-date with 'origin/master'.
