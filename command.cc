@@ -17,6 +17,9 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+#include <regex.h>
+#include <pwd.h>
 
 #include "command.hh"
 
