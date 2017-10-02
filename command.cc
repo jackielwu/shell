@@ -158,7 +158,7 @@ void Command::execute() {
         if (_append) {
           fdout = open(_outFile, O_WRONLY | O_CREAT | O_APPEND, 0660);
         } else {
-          fdout = open(_outFile, O_WRONLY | O_CREAT | O_APPEND, 0660);
+          fdout = open(_outFile, O_WRONLY | O_CREAT | O_TRUNC, 0660);
         } 
       } else {
         fdout = dup(tmpout);
