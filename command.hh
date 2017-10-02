@@ -13,6 +13,12 @@ struct Command {
   char * _inFile;
   char * _errFile;
   int _background;
+  int _append;
+  int _inCounter;
+  int _outCounter;
+
+
+
 
   void prompt();
   void print();
