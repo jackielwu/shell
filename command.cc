@@ -202,7 +202,7 @@ void Command::execute() {
   close(tmperr);
 
   if (!_background) {
-    waitpid(ret, NULL);
+    waitpid(ret, NULL, 0);
   }
   // Setup i/o redirection
 	// and call exec
