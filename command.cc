@@ -114,6 +114,13 @@ void Command::execute() {
 		return;
 	}
 
+  if (_inCounter > 1 || _outCounter > 1) {
+    printf("Ambiguous output redirect.\n");
+    clear();
+    prompt();
+    return;
+  }
+
 	// Print contents of Command data structure
 	//print();
 
