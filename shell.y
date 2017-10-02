@@ -34,6 +34,11 @@
 //#define yylex yylex
 #include <cstdio>
 #include "command.hh"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <regex.h>
+#include <signal.h>
 
 void yyerror(const char * s);
 int yylex();
