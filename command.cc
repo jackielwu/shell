@@ -131,9 +131,9 @@ void Command::execute() {
 
   if (_errFile) {
     if (_append) {
-      ferr = open(_errFile, O_WRONLY | O_CREAT | O_APPEND, 0600);
+      fderr = open(_errFile, O_WRONLY | O_CREAT | O_APPEND, 0600);
     } else {
-      ferr = open(_errFile, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+      fderr = open(_errFile, O_WRONLY | O_CREAT | O_TRUNC, 0600);
     }
   } else {
     fderr = dup(tmperr);
