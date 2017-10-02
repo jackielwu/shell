@@ -114,14 +114,75 @@ void Command::execute() {
 	print();
 
 	// Add execution here
-	int ret;
+	int tmpin = dup(0);
+  int tmpout = dup(1);
+  int tmperr = dup(2);
   
+  int fdin;
+  int fdout;
+  int fderr;
+  int ret;
+  
+  if (_inFile) {
+    fdin = open(_inFile, O_RDONLY);
+  } else {
+    fdin = dup(tmpin);
+  }
+
+  if (_errFile) {
+    if (_append) {
+      ferr = open(_errFile, O_WRONLY | O_CREAT | O_APPEND, 0600);
+    } else {
+      ferr = open(_errFile, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+    }
+  } else {
+    fderr = dup(tmperr);
+  }
+  dup2(fderr, 2);
+  close(fderr);
+
   // For every simple command fork a new process
 	for ( int i = 0; i < _numOfSimpleCommands; i++) {
+    
+    dup2(fdin, 0);
+    close(fdin);
+    
+    //Check for builtins?
+
+    if (i == _numOfSimpleCommand - 1) {
+      if (_outFile) {
+        if (_append) {
+          fdout = open(_outFile, O_WRONLY | O_CREAT | O_APPEND, 0600);
+        } else {
+          fdout = open(_outFile, O_WRONLY | O_CREAT | O_APPEND, 0600);
+        } 
+      } else {
+        fdout = dup(tmpout);
+      }
+    } else {
+      int fdpipe[2];
+      pipe(fdpipe);
+
+      fdout = fdpipe[1];
+      fdin = fdpipe[0];
+    }
+    
+    dup2(fdout, 1);
+    close(fdout);
+
     ret = fork();
     if ( ret == 0) {
       //child
-      execvp(sCom[i]->args[0], sCom[i]->args);
+      
+      if (!strcmp(_simpleCommands[i]->_arguments[0], "printenv")) {
+        char **env = environ;
+        while (*env) {
+          printf("%s\n", *env);
+          env++;
+        }
+      }
+
+      execvp(_simpleCommands[i]->_arguments[0], _simpleCommands[i]->_arguments);
       perror("execvp");
       _exit(1);
     }
@@ -131,7 +192,15 @@ void Command::execute() {
     }
     //Parent shell continue
   }
-  if (!background) {
+
+  dup2(tmpin, 0);
+  dup2(tmpout, 1);
+  dup2(tmperr, 2);
+  close(tmpin);
+  close(tmpout);
+  close(tmperr);
+
+  if (!_background) {
     waitpid(ret, NULL);
   }
   // Setup i/o redirection
