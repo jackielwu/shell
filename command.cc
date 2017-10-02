@@ -149,7 +149,7 @@ void Command::execute() {
     
     //Check for builtins?
 
-    if (i == _numOfSimpleCommand - 1) {
+    if (i == _numOfSimpleCommands - 1) {
       if (_outFile) {
         if (_append) {
           fdout = open(_outFile, O_WRONLY | O_CREAT | O_APPEND, 0600);
