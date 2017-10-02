@@ -117,7 +117,7 @@ void Command::execute() {
 	int ret;
   
   // For every simple command fork a new process
-	for ( int i = 0; i < _numberOfSimpleCommands; i++) {
+	for ( int i = 0; i < _numOfSimpleCommands; i++) {
     ret = fork();
     if ( ret == 0) {
       //child

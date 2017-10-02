@@ -492,3 +492,9 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	command.cc
 Your branch is up-to-date with 'origin/master'.
+[master 4afeb21] Commit
+ 3 files changed, 27 insertions(+), 2 deletions(-)
+ create mode 100644 test-shell/testall.out
+M	.local.git.out
+M	command.cc
+Your branch is up-to-date with 'origin/master'.
