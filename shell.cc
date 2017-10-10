@@ -11,10 +11,10 @@ extern "C" void controlC(int sig) {
   Command::_currentCommand.prompt();
 }
 
-
-
-
-
+extern "C" void zombie(int sig) {
+  int pid = wait3(0, 0, NULL);
+  while (waitpid(-1, NULL, WNOHANG) > 0);
+}
 
 
 
@@ -34,7 +34,16 @@ int main() {
     exit(-1);
   }
 
-
+  //Zombie killer
+  struct sigaction sa2;
+  sa2.sa_handler = zombie;
+  sigemptyset(&sa2.sa_mask);
+  sa2.sa_flags = SA_RESTART;
+  error = sigaction(SIGCHLD, &sa2, NULL);
+  if (error) {
+    perror("sigaction");
+    exit(-1);
+  }
 
 
 
