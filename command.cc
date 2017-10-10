@@ -110,7 +110,7 @@ void Command::print() {
 int Command::builtInCheck(int i) {
   //Check if builtin command is called
   if (!strcmp(_simpleCommands[i]->_arguments[0], "setenv")) {
-    int error = setenc(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
+    int error = setenv(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
     if (error)
       perror("setenv");
     clear();
