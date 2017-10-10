@@ -776,3 +776,9 @@ M	.local.git.out
 M	command.cc
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+[master 3222c70] Commit
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+M	.local.git.out
+M	command.cc
+M	test-shell/testall.out
+Your branch is up-to-date with 'origin/master'.
