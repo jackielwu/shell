@@ -110,7 +110,7 @@ void myunputc(int c) {
   }
   buffer[i] = '\0';
   for (i = strlen(buffer); i >= 0; i--)
-    yy_unput(buffer[i]);
+    myunput(buffer[i]);
 }
 
 ["][^\n\"]*["] {
