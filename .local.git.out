@@ -702,3 +702,9 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	shell.l
 Your branch is up-to-date with 'origin/master'.
+[master d73a033] Commit
+ 2 files changed, 29 insertions(+)
+M	.local.git.out
+M	shell.l
+M	test-shell/testall.out
+Your branch is up-to-date with 'origin/master'.
