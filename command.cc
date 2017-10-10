@@ -110,7 +110,7 @@ void Command::print() {
 int Command::builtInCheck(int i) {
   //Check if builtin command is called
   if (!strcmp(_simpleCommands[i]->_arguments[0], "printenv")) {
-    while (*environ) printf("%s\n", *environ++);
+    printf("%s\n", environ);
     clear();
     prompt();
     return 1;
