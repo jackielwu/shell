@@ -68,6 +68,30 @@ void myunputc(int c) {
   return WORD;
 }
 
+[^ \t\n|><&]*\\[^ \t\n]* {
+  int i = 0;
+  char *eC = (char *) malloc(200);
+  char *temp = yytext;
+  while (*temp) {
+    if (*temp == '\\') {
+      if (*(temp + 1) == '\\') {
+        temp += 2;
+        eC[i++] = '\\';
+      }
+      else {
+        eC[i++] = *(++temp);
+      }
+    }
+    else {
+      eC[i++] = *temp;
+    }
+    temp++;
+  }
+  eC[i] = '\0';
+  yylval.string_val = strdup(eC);
+  return WORD;
+}
+
 
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
