@@ -235,3 +235,27 @@ void Command::prompt() {
 
 Command Command::_currentCommand;
 SimpleCommand * Command::_currentSimpleCommand;
+
+extern "C" void controlC(int sig) {
+  printf("\n");
+  Command::_currentCommand.prompt();
+}
+
+
+
+main() {
+  
+  int error;
+
+  //Control-c
+  struct sigaction sa1;
+  sa1.sa_handler = controlC;
+  sigemptyset(&sa1.sa_mask);
+  sa1.sa_flasgs = SA_RESTART;
+  error = sigaction(SIGINT, &sa1, NULL);
+  if (error) {
+    perror("sigaction");
+    exit(-1);
+  }
+
+}

@@ -601,3 +601,9 @@ Your branch is up-to-date with 'origin/master'.
  1 file changed, 4 insertions(+)
 M	.local.git.out
 Your branch is up-to-date with 'origin/master'.
+[master 730db9c] Commit
+ 1 file changed, 4 insertions(+)
+M	.local.git.out
+M	command.cc
+M	test-shell/testall.out
+Your branch is up-to-date with 'origin/master'.
