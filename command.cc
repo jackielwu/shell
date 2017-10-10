@@ -258,4 +258,7 @@ main() {
     exit(-1);
   }
 
+  Command::_currentCommand.prompt();
+  yyparse();
+
 }
