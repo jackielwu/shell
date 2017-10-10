@@ -236,6 +236,9 @@ void Command::prompt() {
 Command Command::_currentCommand;
 SimpleCommand * Command::_currentSimpleCommand;
 
+int yyparse(void);
+
+
 extern "C" void controlC(int sig) {
   printf("\n");
   Command::_currentCommand.prompt();
