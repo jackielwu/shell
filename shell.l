@@ -9,7 +9,7 @@
 
 %{
 
-#include <cstring>
+#include <string.h>
 #include "y.tab.hh"
 
 static  void yyunput (int c,char *buf_ptr  );
@@ -63,8 +63,8 @@ void myunputc(int c) {
 }
 
 ["][^\n\"]*["] {
-  yytext[strlen(yytext+1)] = '\0';
-  yylval.string_val = strdup(yytext +1);
+  yytext[strlen(++yytext)] = '\0';
+  yylval.string_val = strdup(yytext);
   return WORD;
 }
 
