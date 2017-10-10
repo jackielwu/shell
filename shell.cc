@@ -1,4 +1,6 @@
 #include "command.hh"
+#include <signal.h>
+
 int yyparse(void);
 
 extern "C" void controlC(int sig) {
