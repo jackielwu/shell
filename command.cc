@@ -198,7 +198,8 @@ void Command::execute() {
     dup2(fdin, 0);
     close(fdin);
     
-    //Check for builtins?
+    //Check for builtins
+    if (builtInCheck(i)) return;
 
     if (i == _numOfSimpleCommands - 1) {
       if (_outFile) {
