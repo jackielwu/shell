@@ -235,4 +235,3 @@ void Command::prompt() {
 
 Command Command::_currentCommand;
 SimpleCommand * Command::_currentSimpleCommand;
-}
