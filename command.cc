@@ -117,7 +117,7 @@ int Command::builtInCheck(int i) {
     prompt();
     return 1;
   }
-  
+/*  
   if (!strcmp(_simpleCommands[i]->_arguments[0], "source")) {
     int error = source(_simpleCommands[i]->_arguments[1]);
     if (error)
@@ -126,7 +126,7 @@ int Command::builtInCheck(int i) {
     prompt();
     return 1;
   }
-
+*/
   
   
   if (!strcmp(_simpleCommands[i]->_arguments[0], "setenv")) {
