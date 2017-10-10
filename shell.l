@@ -62,6 +62,13 @@ void myunputc(int c) {
   return LESS;
 }
 
+["][^\n\"]*["] {
+  yytext[strlen(++yytext)] = '\0';
+  yylval.string_val = strdup(yytext);
+  return WORD;
+}
+
+
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   yylval.string_val = strdup(yytext);
