@@ -154,7 +154,7 @@ void Command::execute() {
 		return;
 	}
 
-  if (!strcmp(_simpleCommands[0]->_agruments[0], "exit")) {
+  if (!strcmp(_simpleCommands[0]->_arguments[0], "exit")) {
     printf("Good bye!!\n");
     exit(1);
   }
