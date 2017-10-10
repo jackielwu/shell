@@ -107,6 +107,46 @@ void Command::print() {
 	
 }
 
+in Command::builtInCheck(int i) {
+  //Check if builtin command is called
+  if (!strcmp(_simpleCommands[i]->_arguments[0], "setenv")) {
+    int error = setenc(_simpleCommands[i]-> _arguments[1], _simpleCommands[i]->arguments[2], 1);
+    if (error)
+      perror("setenv");
+    clear();
+    prompt();
+    return 1;
+  }
+
+  if (!strcmp(_simpleCommands[i]->_arguments[0], "unsetenv")) {
+    int error = unsetenv(_simpleCommands[i]->_arguments[1]);
+    if (error)
+      perror("unsetenv");
+    clear();
+    prompt();
+    return 1;
+  }
+
+  if (!strcmp(_simpleCommands[i]->_arguments[0], "cd")) {
+    int error;
+    if (_simpleCommands[i]->numOfArguments == 1) {
+      error = chdir(getenv("HOME"));
+    }
+    else {
+      error = chdir(_simpleCommands[i]->_arguments[1]);
+    }
+
+    if (error < 0) {
+      perror("chdir");
+    }
+
+    clear();
+    prompt();
+    return 1;
+  }
+  return 0;
+}
+
 void Command::execute() {
 	// Don't do anything if there are no simple commands
 	if ( _numOfSimpleCommands == 0 ) {
