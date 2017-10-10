@@ -1,5 +1,8 @@
 #include "command.hh"
 #include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 int yyparse(void);
 
