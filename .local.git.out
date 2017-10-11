@@ -846,3 +846,9 @@ M	.local.git.out
 M	shell.l
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+[master 20eeff2] Commit
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+M	.local.git.out
+M	test-shell/test_subshell
+M	test-shell/testall.out
+Your branch is up-to-date with 'origin/master'.
