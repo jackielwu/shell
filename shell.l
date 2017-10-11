@@ -112,8 +112,8 @@ void myunputc(int c) {
   buffer[i] = '\0';
   for (i = strlen(buffer); i >= 0; i--)
     unput(buffer[i]);
-  Command::clear();
-  Command::prompt();
+  //Command::clear();
+  //Command::prompt();
 }
 
 ["][^\n\"]*["] {
