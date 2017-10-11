@@ -62,7 +62,7 @@ void myunputc(int c) {
   return LESS;
 }
 
-`[^\n]*` {
+`[^\n`]*` {
   char *command = strdup(yytext+1);
   command[strlen(yytext) -1] = '\0';
   
