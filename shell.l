@@ -63,7 +63,7 @@ void myunputc(int c) {
 }
 
 [`][^\n\`]*[`] {
-  yytext[strdup(yytext+1)] ='\0';
+  yytext[strlen(yytext+1)] ='\0';
   char *command = strdup(yytext+1);
   
   int tmpin = dup(0);
