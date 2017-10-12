@@ -63,6 +63,18 @@ void myunputc(int c) {
   return LESS;
 }
 
+source.* {
+  char *src = strdup(yytext);
+  src += 7;
+  char line[256];
+  char *buffer = line;
+  char ch = 0;
+  int inFile = open(src, O_RDONLY);
+  
+  while (read(inFile, &ch, 1)) *buffer++ = ch;
+  while (buffer >= line) unput(*buffer--);
+}
+
 [`][^\n\`]*[`] {
   yytext[strlen(yytext+1)] ='\0';
   char *command = strdup(yytext+1);
