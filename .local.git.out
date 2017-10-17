@@ -929,3 +929,5 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+M	test-shell/testall.out
+Branch master set up to track remote branch master from origin.
