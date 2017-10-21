@@ -177,7 +177,7 @@ int yyparse (void);
 
 void expandWildCardsIfNecessary(char *arg);
 void expandWildCards(char *prefix, char *arg);
-intcmpfunc(const void *file1, const void *file2);
+int cmpfunc(const void *file1, const void *file2);
 
 void yyerror(const char * s);
 int yylex();
