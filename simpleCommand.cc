@@ -75,6 +75,7 @@ char *SimpleCommand::tilde(char *args) {
       temp++;
       while(*temp != '/' && *temp) *(uname++) = *(temp++);
       *uname = '\0';
+      printf("%s\n", user);
 
       if(*temp) {
         nargs = strcat(getpwnam(user)->pw_dir, temp);

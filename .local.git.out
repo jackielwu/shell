@@ -1062,3 +1062,11 @@ M	.local.git.out
 M	shell.y
 M	y.tab.cc
 Your branch is up-to-date with 'origin/master'.
+[master b990357] Commit
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+M	.local.git.out
+M	simpleCommand.cc
+M	test-shell/test_tilde
+M	test-shell/testall.out
+M	y.tab.cc
+Your branch is up-to-date with 'origin/master'.
