@@ -971,3 +971,7 @@ M	test-shell/testall.out
 Branch master set up to track remote branch master from origin.
 >>>>>>> 0afbc8802733eca62e99775d6f482f1de710c2d6
 .local.git.out: needs merge
+[master 1897291] Commit
+M	.local.git.out
+M	command.cc
+Your branch is up-to-date with 'origin/master'.

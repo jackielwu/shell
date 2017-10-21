@@ -78,7 +78,7 @@ char *Command::envExpansion(char *args) {
           *tempbuf++ = *str++;
         }
         *tempbuf = '\0';
-        strcar(replace, buf);
+        strcat(replace, buf);
       }
       dollar++;
       dollar = strchr(dollar, '$');
