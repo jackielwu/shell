@@ -946,3 +946,11 @@ M	.local.git.out
 Your branch and 'origin/master' have diverged,
 and have 2 and 1 different commit each, respectively.
   (use "git pull" to merge the remote branch into yours)
+[master 33de82d] Commit
+ 1 file changed, 6 insertions(+)
+M	.local.git.out
+A	lex.yy.cc
+A	y.tab.cc
+Your branch and 'origin/master' have diverged,
+and have 3 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
