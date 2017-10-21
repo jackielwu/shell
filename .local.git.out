@@ -1044,3 +1044,10 @@ M	.local.git.out
 M	shell.y
 M	y.tab.cc
 Your branch is up-to-date with 'origin/master'.
+[master c4cf05a] Commit
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+M	.local.git.out
+M	shell.y
+M	test-shell/testall.out
+M	y.tab.cc
+Your branch is up-to-date with 'origin/master'.
