@@ -43,6 +43,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+void expandWildCardsIfNecessary(char *arg);
+void expandWildCards(char *prefix, char *arg);
 void yyerror(const char * s);
 int yylex();
 
@@ -156,7 +158,7 @@ background_optional:
 
 %%
 int maxEntries = 20;
-in nEntries = 0;
+int nEntries = 0;
 char **entries;
 
 void expandWildCardsIfNecessary(char *arg) {
@@ -231,7 +233,7 @@ void expandWildCards(char *prefix, char *arg) {
 
     while((ent =readdir(dir)) != NULL) {
       if(!regexec(&re, ent->d_name, 1 &match, 0)) {
-        if(*tmp) {
+        if(*temp) {
           if(ent->d_type == DT_DIR) {
             char *nprefix = (char *) malloc(150);
             if(!strcmp(toOpen, ".")) nprefix = strdup(ent->d_name);
