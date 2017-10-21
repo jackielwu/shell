@@ -43,7 +43,7 @@ char *SimpleCommand::envExpansion(char *args) {
           *tempbuf++ = *str++;
         }
         *tempbuf = '\0';
-        strcat(replace, but);
+        strcat(replace, buf);
       }
       dollar++;
       dollar = strchr(dollar, '$');
