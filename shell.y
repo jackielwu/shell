@@ -45,6 +45,8 @@
 
 void expandWildCardsIfNecessary(char *arg);
 void expandWildCards(char *prefix, char *arg);
+intcmpfunc(const void *file1, const void *file2);
+
 void yyerror(const char * s);
 int yylex();
 
@@ -168,7 +170,7 @@ void expandWildCardsIfNecessary(char *arg) {
 
   if (strchr(arg, '*') || strchr(arg, '?')) {
     expandWildCards(NULL, arg);
-    qsort(entires, nEntries, sizeof(char *), cmpfunc);
+    qsort(entries, nEntries, sizeof(char *), cmpfunc);
     for (int i =0;i<nEntries; i++)
       Command::_currentSimpleCommand->insertArgument(entries[i]);
   }
@@ -176,6 +178,12 @@ void expandWildCardsIfNecessary(char *arg) {
     Command::_currentSimpleCommand->insertArgument(arg);
   }
   return;
+}
+
+int cmpfunc(const void *file1, const void *file2) {
+  const char *_file1 = *(const char **)file1;
+  const char *_file2 = *(const char **)file2;
+  return strcmp(_file1, _file2);
 }
 
 void expandWildCards(char *prefix, char *arg) {
@@ -268,7 +276,7 @@ void expandWildCards(char *prefix, char *arg) {
     char *preToSend = (char *) malloc(100);
     if (prefix) sprintf(preToSend, "%s%s", prefix, dir);
     else preToSend = strdup(dir);
-    if(*temp) expandWildCard(preToSend, ++temp);
+    if(*temp) expandWildCards(preToSend, ++temp);
   }
 }
 

@@ -175,11 +175,13 @@ int yyparse (void);
 #include <sys/types.h>
 #include <unistd.h>
 
+void expandWildCardsIfNecessary(char *arg);
+void expandWildCards(char *prefix, char *arg);
 void yyerror(const char * s);
 int yylex();
 
 
-#line 183 "y.tab.cc" /* yacc.c:358  */
+#line 185 "y.tab.cc" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -477,9 +479,9 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    54,    54,    58,    59,    62,    66,    70,    72,    76,
-      83,    84,    88,    96,   104,   105,   109,   114,   120,   126,
-     133,   138,   145,   146,   147,   151,   154
+       0,    56,    56,    60,    61,    64,    68,    72,    74,    78,
+      85,    86,    90,    98,   106,   107,   111,   116,   122,   128,
+     135,   140,   147,   148,   149,   153,   156
 };
 #endif
 
@@ -1271,90 +1273,90 @@ yyreduce:
   switch (yyn)
     {
         case 6:
-#line 66 "shell.y" /* yacc.c:1646  */
+#line 68 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Yacc: Execute command\n");
     Command::_currentCommand.execute();
   }
-#line 1280 "y.tab.cc" /* yacc.c:1646  */
+#line 1282 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 70 "shell.y" /* yacc.c:1646  */
+#line 72 "shell.y" /* yacc.c:1646  */
     {
   }
-#line 1287 "y.tab.cc" /* yacc.c:1646  */
+#line 1289 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 72 "shell.y" /* yacc.c:1646  */
+#line 74 "shell.y" /* yacc.c:1646  */
     { yyerrok; }
-#line 1293 "y.tab.cc" /* yacc.c:1646  */
+#line 1295 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 76 "shell.y" /* yacc.c:1646  */
+#line 78 "shell.y" /* yacc.c:1646  */
     {
     Command::_currentCommand.
       insertSimpleCommand( Command::_currentSimpleCommand );
   }
-#line 1302 "y.tab.cc" /* yacc.c:1646  */
+#line 1304 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 88 "shell.y" /* yacc.c:1646  */
+#line 90 "shell.y" /* yacc.c:1646  */
     {
    // printf("   Yacc: insert argument \"%s\"\n", $1);
     //eWCIN($1)
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].string_val) );\
   }
-#line 1312 "y.tab.cc" /* yacc.c:1646  */
+#line 1314 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 96 "shell.y" /* yacc.c:1646  */
+#line 98 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Yacc: insert command \"%s\"\n", $1);
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].string_val) );
   }
-#line 1322 "y.tab.cc" /* yacc.c:1646  */
+#line 1324 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 109 "shell.y" /* yacc.c:1646  */
+#line 111 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Great Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup((yyvsp[0].string_val));
     Command::_currentCommand._outCounter++;
   }
-#line 1332 "y.tab.cc" /* yacc.c:1646  */
+#line 1334 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 114 "shell.y" /* yacc.c:1646  */
+#line 116 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Great Great Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup((yyvsp[0].string_val));
     Command::_currentCommand._append = 1;
     Command::_currentCommand._outCounter++;
   }
-#line 1343 "y.tab.cc" /* yacc.c:1646  */
+#line 1345 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 120 "shell.y" /* yacc.c:1646  */
+#line 122 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup((yyvsp[0].string_val));
     Command::_currentCommand._errFile = strdup((yyvsp[0].string_val));
     Command::_currentCommand._outCounter++;
   }
-#line 1354 "y.tab.cc" /* yacc.c:1646  */
+#line 1356 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 126 "shell.y" /* yacc.c:1646  */
+#line 128 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Great Great Ampersand Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._outFile = strdup((yyvsp[0].string_val));
@@ -1362,38 +1364,38 @@ yyreduce:
     Command::_currentCommand._outCounter++;
     Command::_currentCommand._append = 1;
   }
-#line 1366 "y.tab.cc" /* yacc.c:1646  */
+#line 1368 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 133 "shell.y" /* yacc.c:1646  */
+#line 135 "shell.y" /* yacc.c:1646  */
     {
     //printf("   Less Word Yacc: insert output \"%s\"\n", $2);
     Command::_currentCommand._inFile = strdup((yyvsp[0].string_val));
     Command::_currentCommand._inCounter++;
   }
-#line 1376 "y.tab.cc" /* yacc.c:1646  */
+#line 1378 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 138 "shell.y" /* yacc.c:1646  */
+#line 140 "shell.y" /* yacc.c:1646  */
     {
     Command::_currentCommand._errFile = strdup((yyvsp[0].string_val));
     Command::_currentCommand._outCounter++;
   }
-#line 1385 "y.tab.cc" /* yacc.c:1646  */
+#line 1387 "y.tab.cc" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 151 "shell.y" /* yacc.c:1646  */
+#line 153 "shell.y" /* yacc.c:1646  */
     {
     Command::_currentCommand._background = 1;
   }
-#line 1393 "y.tab.cc" /* yacc.c:1646  */
+#line 1395 "y.tab.cc" /* yacc.c:1646  */
     break;
 
 
-#line 1397 "y.tab.cc" /* yacc.c:1646  */
+#line 1399 "y.tab.cc" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1621,10 +1623,10 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 157 "shell.y" /* yacc.c:1906  */
+#line 159 "shell.y" /* yacc.c:1906  */
 
 int maxEntries = 20;
-in nEntries = 0;
+int nEntries = 0;
 char **entries;
 
 void expandWildCardsIfNecessary(char *arg) {
@@ -1699,7 +1701,7 @@ void expandWildCards(char *prefix, char *arg) {
 
     while((ent =readdir(dir)) != NULL) {
       if(!regexec(&re, ent->d_name, 1 &match, 0)) {
-        if(*tmp) {
+        if(*temp) {
           if(ent->d_type == DT_DIR) {
             char *nprefix = (char *) malloc(150);
             if(!strcmp(toOpen, ".")) nprefix = strdup(ent->d_name);
