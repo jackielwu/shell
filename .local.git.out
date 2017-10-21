@@ -1070,3 +1070,8 @@ M	test-shell/test_tilde
 M	test-shell/testall.out
 M	y.tab.cc
 Your branch is up-to-date with 'origin/master'.
+[master 4e50c95] Commit
+ 5 files changed, 13 insertions(+), 4 deletions(-)
+M	.local.git.out
+M	simpleCommand.cc
+Your branch is up-to-date with 'origin/master'.
