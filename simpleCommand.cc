@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include <string.h>
-
+#include <pwd.h>
 
 #include "simpleCommand.hh"
 
