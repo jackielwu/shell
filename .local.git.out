@@ -929,6 +929,7 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+<<<<<<< HEAD
 [master 94baf6a] Commit
  2 files changed, 6 insertions(+), 1 deletion(-)
 M	.local.git.out
@@ -965,3 +966,8 @@ M	simpleCommand.cc
 Your branch and 'origin/master' have diverged,
 and have 4 and 1 different commit each, respectively.
   (use "git pull" to merge the remote branch into yours)
+=======
+M	test-shell/testall.out
+Branch master set up to track remote branch master from origin.
+>>>>>>> 0afbc8802733eca62e99775d6f482f1de710c2d6
+.local.git.out: needs merge
