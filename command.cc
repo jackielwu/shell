@@ -117,7 +117,7 @@ char *Command::tilde(char *args) {
         return args;
       }
       else {
-        args = strdup(getpwnam(user)->pwd_dir);
+        args = strdup(getpwnam(user)->pw_dir);
         return args;
       }
     }
