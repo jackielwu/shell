@@ -1733,7 +1733,7 @@ void expandWildCards(char *prefix, char *arg) {
             }
           }
           else {
-            entries[nEntries++] = (argument[0] != '\0')?strdup(agrument):strdup(ent->d_name);
+            entries[nEntries++] = (argument[0] != '\0')?strdup(argument):strdup(ent->d_name);
           }
         }
       }
