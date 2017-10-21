@@ -9,6 +9,9 @@ struct SimpleCommand {
   int _numOfArguments;
   char ** _arguments;
 
+  char *envExpansion(char *argument);
+  char *tilde(char *argument);
+
   SimpleCommand();
   void insertArgument( char * argument );
 };
