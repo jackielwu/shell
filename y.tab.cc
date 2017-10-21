@@ -1309,8 +1309,8 @@ yyreduce:
 #line 92 "shell.y" /* yacc.c:1646  */
     {
    // printf("   Yacc: insert argument \"%s\"\n", $1);
-    //eWCIN($1)
-    Command::_currentSimpleCommand->insertArgument( (yyvsp[0].string_val) );\
+    Command::_expandWildCardsIfNecessary((yyvsp[0].string_val));
+    //Command::_currentSimpleCommand->insertArgument( $1 );
   }
 #line 1316 "y.tab.cc" /* yacc.c:1646  */
     break;
