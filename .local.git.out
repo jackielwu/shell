@@ -940,3 +940,9 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 Your branch is ahead of 'origin/master' by 1 commit.
   (use "git push" to publish your local commits)
+[master 7e528b7] Commit
+ 1 file changed, 5 insertions(+)
+M	.local.git.out
+Your branch and 'origin/master' have diverged,
+and have 2 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
