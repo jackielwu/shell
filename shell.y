@@ -39,6 +39,9 @@
 #include <stdlib.h>
 #include <regex.h>
 #include <signal.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 void yyerror(const char * s);
 int yylex();
@@ -152,6 +155,122 @@ background_optional:
   ;
 
 %%
+int maxEntries = 20;
+in nEntries = 0;
+char **entries;
+
+void expandWildCardsIfNecessary(char *arg) {
+  maxEntries = 20;
+  nEntries = 0;
+  entries = (char **) malloc(maxEntries * sizeof(char *));
+
+  if (strchr(arg, '*') || strchr(arg, '?')) {
+    expandWildCards(NULL, arg);
+    qsort(entires, nEntries, sizeof(char *), cmpfunc);
+    for (int i =0;i<nEntries; i++)
+      Command::_currentSimpleCommand->insertArgument(entries[i]);
+  }
+  else {
+    Command::_currentSimpleCommand->insertArgument(arg);
+  }
+  return;
+}
+
+void expandWildCards(char *prefix, char *arg) {
+  char *temp = arg;
+  char *save = (char *) malloc(strlen(arg) +10);
+  char *dir = save;
+
+  if(temp[0] =='/') *(save++) = *(temp++);
+  
+  while (*temp != '/' && *temp) *(save++) =*(temp++);
+  *save = '\0';
+
+  if(strchr(dir, '*') || strchr(dir, '?')) {
+    if(!prefix && arg[0] == '/') {
+      prefix = strdup("/");
+      dir++;
+    }
+    char *reg = (char *) malloc (2*strlen(arg) +10);
+    char *a = dir;
+    char *r = reg;
+
+    *(r++) = '^';
+    while (*a) {
+      if (*a == '*') {
+        *(r++) = '.';
+        *(r++) = '*';
+      }
+      else if (*a == '?') {
+        *(r++) = '.';
+      }
+      else if (*a == '.') {
+        *(r++) = '\\';
+        *(r++) = '.';
+      }
+      else {
+        *(r++) = *a;
+      }
+      a++;
+    }
+    *(r++) = '$';
+    *r = '\0';
+
+    regex_t re;
+    int expbuf = regcomp(&re, reg, REG_EXTENDED|REG_NOSUB);
+
+    char *toOpen = strdup((prefix)?prefix:".");
+    DIR *dir = opendir(toOpen);
+    if (dir == NULL) {
+      perror("opendir");
+      return;
+    }
+
+    struc dirent *ent;
+    regmatch_t match;
+
+    while((ent =readdir(dir)) != NULL) {
+      if(!regexec(&re, ent->d_name, 1 &match, 0)) {
+        if(*tmp) {
+          if(ent->d_type == DT_DIR) {
+            char *nprefix = (char *) malloc(150);
+            if(!strcmp(toOpen, ".")) nprefix = strdup(ent->d_name);
+            else if (!strcmp(toOpen, "/")) sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+            else sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+            expandWildCards(nprefix,(*temp == '/')?++temp:temp);
+          }
+        }
+        else {
+          if (nEntries == maxEntries) {
+            maxEntries *= 2;
+            entries = (char **) realloc(entries, maxEntries *sizeof(char *));
+          }
+          char *argument = (char *) malloc(100);
+          argument[0] = '\0';
+          if (prefix)
+            sprintf(argument, "%s%s", prefix, ent->d_name);
+          if(ent->d_name[0] == '.') {
+            if(arg[0] == '.') {
+              entries[nEntries++] = (argument[0] != '\0')?strdup(argument):strdup(ent->d_name);
+            }
+          }
+          else {
+            entries[nEntries++] = (argument[0] != '\0')?strdup(agrument):strdup(ent->d_name);
+          }
+        }
+      }
+    }
+    closedir(dir);
+  }
+  else {
+    char *preToSend = (char *) malloc(100);
+    if (prefix) sprintf(preToSend, "%s%s", prefix, dir);
+    else preToSend = strdup(dir);
+    if(*temp) expandWildCard(preToSend, ++temp);
+  }
+}
+
+
 
 void
 yyerror(const char * s)
