@@ -89,9 +89,42 @@ char *Command::envExpansion(char *args) {
   return NULL;
 }
 
-void Command::insertArgument(char *args) {
-  if (_numOfAvailable
+char *Command::tilde(char *args) {
+  if(args[0] =='~') {
+    if (strlen(args) ==1) {
+      args= strdup(getenv("HOME"));
+      return args;
+    }
+    else {
+      if(args[1] == '/') {
+        char *dir = strdup(getenv("HOME"));
+        args++;
+        args = strcat(dir, args);
+        return args;
+      }
+      char *nargs = (char *) malloc(strlen(args) +20);
+      char *uname = (char *) malloc(50);
+      char *user = uname;
+      char *temp = args;
+      
+      temp++;
+      while( *temp!= '/' &&*temp) *(uname++) = *(temp++);
+      *uname ='\0';
+
+      if(*temp){
+        nargs = strcat(getpwnam(user)->pw_dir, temp);
+        args = strdup(nargs);
+        return args;
+      }
+      else {
+        args = strdup(getpwnam(user)->pwd_dir);
+        return args;
+      }
+    }
+  }
+  return NULL;
 }
+
 
 void Command::insertSimpleCommand( SimpleCommand * simpleCommand ) {
 	if ( _numOfAvailableSimpleCommands == _numOfSimpleCommands ) {

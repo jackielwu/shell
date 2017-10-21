@@ -28,8 +28,7 @@ struct Command {
   int builtInCheck(int i);
 
   char *envExpansion(char *args);
-  void insertArgument(char *args);
-
+  char *tilde(char *args);
   Command();
   void insertSimpleCommand( SimpleCommand * simpleCommand );
 

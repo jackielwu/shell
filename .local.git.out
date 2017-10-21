@@ -954,3 +954,14 @@ A	y.tab.cc
 Your branch and 'origin/master' have diverged,
 and have 3 and 1 different commit each, respectively.
   (use "git pull" to merge the remote branch into yours)
+[master c142410] Commit
+ 3 files changed, 3753 insertions(+)
+ create mode 100644 lex.yy.cc
+ create mode 100644 y.tab.cc
+M	.local.git.out
+M	command.cc
+M	command.hh
+M	simpleCommand.cc
+Your branch and 'origin/master' have diverged,
+and have 4 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)

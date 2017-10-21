@@ -1,6 +1,7 @@
 #include <cstdlib>
 
 #include "simpleCommand.hh"
+#include "command.hh"
 
 SimpleCommand::SimpleCommand() {
 	// Create available space for 5 arguments
@@ -16,6 +17,13 @@ void SimpleCommand::insertArgument( char * argument ) {
 		_arguments = (char **) realloc( _arguments,
 				  _numOfAvailableArguments * sizeof( char * ) );
 	}
+  char *exp = envExpansion(argument);
+
+  if (exp) argument = strdup(exp);
+
+  exp = tilde(argument);
+
+  if(exp) argument = strdup(exp);
 	
 	_arguments[ _numOfArguments ] = argument;
 
