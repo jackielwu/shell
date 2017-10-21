@@ -43,6 +43,56 @@ Command::Command()
 
 }
 
+char *Command::envExpansion(char *args) {
+  char *str = strdup(args);
+  char *dollar = strchr(str, '$');
+  char *brace = strchr(str, '{');
+
+  char *replace = (char *) malloc(sizeof(args) +50);
+  char *temp = replace;
+
+  if(dollar && brace) {
+    while(*str !='$') {
+      *temp++ = *str++;
+    }
+    *temp = '\0';
+    while(dollar) {
+      if(dollar[1] == '{' && dollar[2] != '}') {
+        char *temp2 = dollar +2;
+        char *env = (char *) malloc(20);
+        char *envtemp = env;
+        while(*temp2 != '}') {
+          *envtemp++ = *temp2++;
+        }
+        *envtemp ='\0';
+
+        char *get = getenv(env);
+
+        strcat(replace, get);
+        while(*(str-1) != '}') str++;
+
+        char *buf = (char *) malloc(20);
+        char *tempbuf = buf;
+
+        while(*str != '$' && *str) {
+          *tempbuf++ = *str++;
+        }
+        *tempbuf = '\0';
+        strcar(replace, buf);
+      }
+      dollar++;
+      dollar = strchr(dollar, '$');
+    }
+    args =strdup(replace);
+    return args;
+  }
+  return NULL;
+}
+
+void Command::insertArgument(char *args) {
+  if (_numOfAvailable
+}
+
 void Command::insertSimpleCommand( SimpleCommand * simpleCommand ) {
 	if ( _numOfAvailableSimpleCommands == _numOfSimpleCommands ) {
 		_numOfAvailableSimpleCommands *= 2;
