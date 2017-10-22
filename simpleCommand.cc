@@ -55,39 +55,35 @@ char *SimpleCommand::envExpansion(char *args) {
   return NULL;
 }
 
-char *SimpleCommand::tilde(char *args) {
-  if(args[0] == '~') {
-    if(strlen(args) == 1) {
-      args = strdup(getenv("HOME"));
-      return args;
+char *SimpleCommand::tilde(char *argument) {
+  if(argument[0] == '~') {
+    if(strlen(argument) == 1) {
+      argument = strdup(getenv("HOME"));
+      return argument;
     }
     else {
-      if(args[1] == '/') {
+      if(argument[1] == '/') {
         char *dir = strdup(getenv("HOME"));
-        args++;
-        args = strcat(dir, args);
-        return args;
+        argument++;
+        argument = strcat(dir, argument);
+        return argument;
       }
-      char *nargs = (char *) malloc(strlen(args) + 20);
+      char *nargs = (char *) malloc(strlen(argument) + 20);
       char *uname = (char *) malloc(50);
       char *user = uname;
-      char *temp = args;
+      char *temp = argument;
 
       temp++;
       while(*temp != '/' && *temp) *(uname++) = *(temp++);
       *uname = '\0';
-      //printf("%s\n", user);
-      struct passwd *pw = getpwnam(user);
       if(*temp) {
-        printf("cs180:");
-        printf("%s\n",pw->pw_dir);
-        nargs = strcat(pw->pw_dir, temp);
-        args = strdup(nargs);
-        return args;
+        nargs = strcat(getpwnam(user)->pw_dir, temp);
+        argument = strdup(nargs);
+        return argument;
       }
       else {
-        args = strdup(getpwnam(user)->pw_dir);
-        return args;
+        argument = strdup(getpwnam(user)->pw_dir);
+        return argument;
       }
     }
   }
