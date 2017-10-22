@@ -80,7 +80,7 @@ char *SimpleCommand::tilde(char *args) {
 
       if(*temp) {
         nargs = strcat(getpwnam(user)->pw_dir, temp);
-        printf("%s\n", getpwnam(user)->pw_dir);
+        printf("%s\n", getpwnam(user));
         args = strdup(nargs);
         return args;
       }
