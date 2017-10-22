@@ -1150,3 +1150,8 @@ M	.local.git.out
 M	simpleCommand.cc
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+[master 447d382] Commit
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+M	.local.git.out
+M	simpleCommand.cc
+Your branch is up-to-date with 'origin/master'.
