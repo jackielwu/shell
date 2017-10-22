@@ -1160,3 +1160,9 @@ Your branch is up-to-date with 'origin/master'.
 M	.local.git.out
 M	simpleCommand.cc
 Your branch is up-to-date with 'origin/master'.
+[master b10ff6f] Commit
+ 2 files changed, 6 insertions(+)
+M	.local.git.out
+M	simpleCommand.cc
+M	test-shell/test_tilde
+Your branch is up-to-date with 'origin/master'.
