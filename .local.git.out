@@ -1166,3 +1166,10 @@ M	.local.git.out
 M	simpleCommand.cc
 M	test-shell/test_tilde
 Your branch is up-to-date with 'origin/master'.
+[master 2b6b6cb] Commit
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+M	.local.git.out
+D	lex.yy.cc
+M	test-shell/test_tilde
+D	y.tab.cc
+Your branch is up-to-date with 'origin/master'.
