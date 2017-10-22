@@ -77,11 +77,11 @@ char *SimpleCommand::tilde(char *args) {
       while(*temp != '/' && *temp) *(uname++) = *(temp++);
       *uname = '\0';
       //printf("%s\n", user);
-      struct *passwd = getpwnam(user);
+      struct passwd pw = getpwnam(user);
       if(*temp) {
         printf("cs180:");
-        printf("%s\n",passwd->pw_dir);
-        nargs = strcat(passwd->pw_dir, temp);
+        printf("%s\n",pw->pw_dir);
+        nargs = strcat(pw->pw_dir, temp);
         args = strdup(nargs);
         return args;
       }
