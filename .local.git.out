@@ -1173,3 +1173,10 @@ D	lex.yy.cc
 M	test-shell/test_tilde
 D	y.tab.cc
 Your branch is up-to-date with 'origin/master'.
+[master ea65d83] Commit
+ 4 files changed, 8 insertions(+), 3875 deletions(-)
+ delete mode 100644 lex.yy.cc
+ delete mode 100644 y.tab.cc
+M	.local.git.out
+M	command.cc
+Your branch is up-to-date with 'origin/master'.
