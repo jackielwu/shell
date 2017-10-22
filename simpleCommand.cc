@@ -77,12 +77,12 @@ char *SimpleCommand::tilde(char *argument) {
       while(*temp != '/' && *temp) *(uname++) = *(temp++);
       *uname = '\0';
       if(*temp) {
-        nargs = strcat(getpwnam(user)->pw_dir, temp);
+        nargs = strcat(getpwnam(user.c_str())->pw_dir, temp);
         argument = strdup(nargs);
         return argument;
       }
       else {
-        argument = strdup(getpwnam(user)->pw_dir);
+        argument = strdup(getpwnam(user.c_str())->pw_dir);
         return argument;
       }
     }
