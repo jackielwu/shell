@@ -159,7 +159,7 @@ int Command::builtInCheck(int i) {
 }
 
 void Command::execute() {
-	_incounter =1;
+	_inCounter =1;
   // Don't do anything if there are no simple commands
 	if ( _numOfSimpleCommands == 0 ) {
 		prompt();
