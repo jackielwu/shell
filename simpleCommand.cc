@@ -53,6 +53,7 @@ char *SimpleCommand::envExpansion(char *args) {
     free(replace);
     return args;
   }
+  free(replace);
   return NULL;
 }
 
