@@ -245,16 +245,19 @@ void expandWildCards(char *prefix, char *arg) {
     while((ent =readdir(dir)) != NULL) {
       if(!regexec(&re, ent->d_name, 1, &match, 0)) {
         if(*suffix) {
+          //check dir
           if(ent->d_type == DT_DIR) {
             char *nprefix = (char *) malloc(200);
+            //check .
             if(!strcmp(toOpen, ".")) {
               nprefix = strdup(ent->d_name);
             }
+            //check /
             else if (!strcmp(toOpen, "/")) {
               sprintf(nprefix, "%s%s", toOpen, ent->d_name);
             }
             else {
-              sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+              sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
             }
             expandWildCards(nprefix,(*suffix == '/')?++suffix:suffix);
           }
@@ -265,7 +268,7 @@ void expandWildCards(char *prefix, char *arg) {
             entries = (char **) realloc(entries, maxEntries *sizeof(char *));
           }
           char *argument = (char *) malloc(100);
-          argument[0] = '\0';
+          //argument[0] = '\0';
           if (prefix)
             sprintf(argument, "%s%s", prefix, ent->d_name);
           if(ent->d_name[0] == '.') {

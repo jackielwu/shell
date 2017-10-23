@@ -1268,3 +1268,8 @@ M	.local.git.out
 M	shell.y
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+[master 87debc1] Commit
+ 3 files changed, 22 insertions(+), 7 deletions(-)
+M	.local.git.out
+M	shell.y
+Your branch is up-to-date with 'origin/master'.
