@@ -35,6 +35,7 @@ char *SimpleCommand::envExpansion(char *args) {
           *envtemp++ = *temp2++;
         }
         *envtemp = '\0';
+
         char *get = getenv(env);
         strcat(replace, get);
         while(*(str-1) != '}') str++;
