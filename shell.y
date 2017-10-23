@@ -268,7 +268,7 @@ void expandWildCards(char *prefix, char *arg) {
             entries = (char **) realloc(entries, maxEntries *sizeof(char *));
           }
           char *argument = (char *) malloc(100);
-          //argument[0] = '\0';
+          argument[0] = '\0';
           if (prefix)
             sprintf(argument, "%s%s", prefix, ent->d_name);
           if(ent->d_name[0] == '.') {
