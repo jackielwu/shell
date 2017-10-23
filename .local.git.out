@@ -1338,3 +1338,9 @@ M	.local.git.out
 M	shell.y
 M	test-shell/testall.out
 Your branch is up-to-date with 'origin/master'.
+[master ac864ed] Commit
+ 3 files changed, 11 insertions(+), 5 deletions(-)
+M	.local.git.out
+M	shell.y
+M	test-shell/testall.out
+Your branch is up-to-date with 'origin/master'.
