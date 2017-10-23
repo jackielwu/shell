@@ -80,6 +80,8 @@ void Command:: clear() {
 	_inFile = 0;
 	_errFile = 0;
 	_background = 0;
+  _inCounter = 0;
+  _outCounter = 0;
 }
 
 void Command::print() {
@@ -171,7 +173,7 @@ void Command::execute() {
     exit(1);
   }
 
-  if (_inCounter > 1 || _outCounter >= 2) {
+  if (_inCounter > 1 || _outCounter > 1) {
     printf("Ambiguous output redirect.\n");
     clear();
     prompt();
