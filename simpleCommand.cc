@@ -45,6 +45,8 @@ char *SimpleCommand::envExpansion(char *args) {
         }
         *tempbuf = '\0';
         strcat(replace, buf);
+        free(env);
+        free(buf);
       }
       dollar++;
       dollar = strchr(dollar, '$');

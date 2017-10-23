@@ -1395,3 +1395,8 @@ Your branch is up-to-date with 'origin/master'.
  2 files changed, 9 insertions(+)
 M	.local.git.out
 Your branch is up-to-date with 'origin/master'.
+[master d8ab7dd] Commit
+ 1 file changed, 4 insertions(+)
+M	.local.git.out
+M	simpleCommand.cc
+Your branch is up-to-date with 'origin/master'.
