@@ -259,7 +259,7 @@ void expandWildCards(char *prefix, char *arg) {
             else {
               sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
             }
-            expandWildCards(nprefix,(*suffix == '/')?++suffix:suffix);
+            expandWildCards(nprefix,suffix);
           }
         }
         else {
