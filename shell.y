@@ -193,7 +193,7 @@ void expandWildCards(char *prefix, char *arg) {
 
   if(suffix[0] =='/') *(save++) = *(suffix++);
   
-  while (*suffix != '/' && *temp) *(save++) =*(suffiz++);
+  while (*suffix != '/' && *suffix) *(save++) =*(suffix++);
   *save = '\0';
 
   if(strchr(dir, '*') || strchr(dir, '?')) {
