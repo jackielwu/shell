@@ -50,6 +50,7 @@ char *SimpleCommand::envExpansion(char *args) {
       dollar = strchr(dollar, '$');
     }
     args = strdup(replace);
+    free(replace);
     return args;
   }
   return NULL;
@@ -81,10 +82,14 @@ char *SimpleCommand::tilde(char *argument) {
       if(*temp) {
         nargs = strcat(getpwnam(user)->pw_dir, temp);
         argument = strdup(nargs);
+        free(nargs);
+        free(uname);
         return argument;
       }
       else {
         argument = strdup(getpwnam(user)->pw_dir);
+        free(nargs);
+        free(uname);
         return argument;
       }
     }
