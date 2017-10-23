@@ -192,10 +192,11 @@ void expandWildCards(char *prefix, char *arg) {
   char *save = (char *) malloc(strlen(arg) +10);
   char *dir = save;
 
-  if(suffix[0] =='/') *(save++) = *(suffix++);
+  if(suffix[0] =='/')
+    *(save++) = *(suffix++);
   
   while (*suffix != '/' && *suffix) {
-     *(save++) =*(suffix++);
+     *(save++) = *(suffix++);
   }
   *save = '\0';
 
@@ -241,6 +242,7 @@ void expandWildCards(char *prefix, char *arg) {
 
     struct dirent *ent;
     regmatch_t match;
+
     while((ent =readdir(dir)) != NULL) {
       //printf("%s\n",ent->d_name);
       if(!regexec(&re, ent->d_name, 1, &match, 0)) {
@@ -259,8 +261,8 @@ void expandWildCards(char *prefix, char *arg) {
             else {
               sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
             }
-            expandWildCards(nprefix,suffix);
-            free(nprefix);
+            expandWildCards(nprefix,(*suffix == '/')?++suffix:suffix);
+            //free(nprefix);
           }
         }
         else {
