@@ -171,8 +171,9 @@ void expandWildCardsIfNecessary(char *arg) {
   if (strchr(arg, '*') || strchr(arg, '?')) {
     expandWildCards(NULL, arg);
     qsort(entries, nEntries, sizeof(char *), cmpfunc);
-    for (int i =0;i<nEntries; i++)
+    for (int i =0;i<nEntries; i++) {
       Command::_currentSimpleCommand->insertArgument(entries[i]);
+    }
   }
   else {
     Command::_currentSimpleCommand->insertArgument(arg);
@@ -193,7 +194,9 @@ void expandWildCards(char *prefix, char *arg) {
 
   if(suffix[0] =='/') *(save++) = *(suffix++);
   
-  while (*suffix != '/' && *suffix) *(save++) =*(suffix++);
+  while (*suffix != '/' && *suffix) {
+     *(save++) =*(suffix++);
+  }
   *save = '\0';
 
   if(strchr(dir, '*') || strchr(dir, '?')) {
@@ -243,10 +246,16 @@ void expandWildCards(char *prefix, char *arg) {
       if(!regexec(&re, ent->d_name, 1, &match, 0)) {
         if(*suffix) {
           if(ent->d_type == DT_DIR) {
-            char *nprefix = (char *) malloc(150);
-            if(!strcmp(toOpen, ".")) nprefix = strdup(ent->d_name);
-            else if (!strcmp(toOpen, "/")) sprintf(nprefix, "%s%s", toOpen, ent->d_name);
-            else sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+            char *nprefix = (char *) malloc(200);
+            if(!strcmp(toOpen, ".")) {
+              nprefix = strdup(ent->d_name);
+            }
+            else if (!strcmp(toOpen, "/")) {
+              sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+            }
+            else {
+              sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+            }
             expandWildCards(nprefix,(*suffix == '/')?++suffix:suffix);
           }
         }
