@@ -51,10 +51,14 @@ char *SimpleCommand::envExpansion(char *args) {
     }
     args = strdup(replace);
     free(str);
+    free(dollar);
+    free(brace);
     free(replace);
     return args;
   }
   free(str);
+  free(dollar);
+  free(brace);
   free(replace);
   return NULL;
 }
