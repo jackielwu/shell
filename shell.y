@@ -242,7 +242,7 @@ void expandWildCards(char *prefix, char *arg) {
     struct dirent *ent;
     regmatch_t match;
     while((ent =readdir(dir)) != NULL) {
-      printf("%s\n",ent->d_name);
+      //printf("%s\n",ent->d_name);
       if(!regexec(&re, ent->d_name, 1, &match, 0)) {
         if(*suffix) {
           //check dir
@@ -257,7 +257,7 @@ void expandWildCards(char *prefix, char *arg) {
               sprintf(nprefix, "%s%s", toOpen, ent->d_name);
             }
             else {
-              sprintf(nprefix, "%s%s", toOpen, ent->d_name);
+              sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
             }
             expandWildCards(nprefix,suffix);
           }
