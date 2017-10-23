@@ -246,7 +246,7 @@ void expandWildCards(char *prefix, char *arg) {
             char *nprefix = (char *) malloc(150);
             if(!strcmp(toOpen, ".")) nprefix = strdup(ent->d_name);
             else if (!strcmp(toOpen, "/")) sprintf(nprefix, "%s%s", toOpen, ent->d_name);
-            else sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
+            else sprintf(nprefix, "%s%s", toOpen, ent->d_name);
             expandWildCards(nprefix,(*suffix == '/')?++suffix:suffix);
           }
         }
