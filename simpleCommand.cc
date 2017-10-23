@@ -50,9 +50,11 @@ char *SimpleCommand::envExpansion(char *args) {
       dollar = strchr(dollar, '$');
     }
     args = strdup(replace);
+    free(str);
     free(replace);
     return args;
   }
+  free(str);
   free(replace);
   return NULL;
 }
