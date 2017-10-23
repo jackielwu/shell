@@ -57,7 +57,7 @@ char *SimpleCommand::envExpansion(char *args) {
 
 char *SimpleCommand::tilde(char *argument) {
   if(argument[0] == '~') {
-    _outCounter = 1;
+    //_outCounter = 1;
     if(strlen(argument) == 1) {
       argument = strdup(getenv("HOME"));
       return argument;
