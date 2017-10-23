@@ -85,14 +85,10 @@ char *SimpleCommand::tilde(char *argument) {
       if(*temp) {
         nargs = strcat(getpwnam(user)->pw_dir, temp);
         argument = strdup(nargs);
-        free(nargs);
-        free(uname);
         return argument;
       }
       else {
         argument = strdup(getpwnam(user)->pw_dir);
-        free(nargs);
-        free(uname);
         return argument;
       }
     }
