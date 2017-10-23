@@ -187,13 +187,13 @@ int cmpfunc(const void *file1, const void *file2) {
 }
 
 void expandWildCards(char *prefix, char *arg) {
-  char *temp = arg;
+  char *suffix = arg;
   char *save = (char *) malloc(strlen(arg) +10);
   char *dir = save;
 
-  if(temp[0] =='/') *(save++) = *(temp++);
+  if(suffix[0] =='/') *(save++) = *(suffix++);
   
-  while (*temp != '/' && *temp) *(save++) =*(temp++);
+  while (*suffix != '/' && *temp) *(save++) =*(suffiz++);
   *save = '\0';
 
   if(strchr(dir, '*') || strchr(dir, '?')) {
@@ -241,13 +241,13 @@ void expandWildCards(char *prefix, char *arg) {
 
     while((ent =readdir(dir)) != NULL) {
       if(!regexec(&re, ent->d_name, 1, &match, 0)) {
-        if(*temp) {
+        if(*suffix) {
           if(ent->d_type == DT_DIR) {
             char *nprefix = (char *) malloc(150);
             if(!strcmp(toOpen, ".")) nprefix = strdup(ent->d_name);
             else if (!strcmp(toOpen, "/")) sprintf(nprefix, "%s%s", toOpen, ent->d_name);
             else sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
-            expandWildCards(nprefix,(*temp == '/')?++temp:temp);
+            expandWildCards(nprefix,(*suffix == '/')?++suffix:suffix);
           }
         }
         else {
@@ -276,7 +276,7 @@ void expandWildCards(char *prefix, char *arg) {
     char *preToSend = (char *) malloc(100);
     if (prefix) sprintf(preToSend, "%s%s", prefix, dir);
     else preToSend = strdup(dir);
-    if(*temp) expandWildCards(preToSend, ++temp);
+    if(*suffix) expandWildCards(preToSend, ++suffix);
   }
 }
 
