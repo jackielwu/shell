@@ -60,7 +60,7 @@ void Command:: clear() {
 		}
 		
 		free ( _simpleCommands[ i ]->_arguments );
-		//free ( _simpleCommands[ i ] );
+		free ( _simpleCommands[ i ] );
 	}
 
 	if ( _outFile ) {
