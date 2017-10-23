@@ -257,7 +257,7 @@ void expandWildCards(char *prefix, char *arg) {
               sprintf(nprefix, "%s%s", toOpen, ent->d_name);
             }
             else {
-              sprintf(nprefix, "%s/%s", toOpen, ent->d_name);
+              sprintf(nprefix, "%s%s", toOpen, ent->d_name);
             }
             expandWildCards(nprefix,suffix);
           }
