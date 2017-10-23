@@ -5,7 +5,6 @@
 #include <stdio.h>
 
 #include "simpleCommand.hh"
-#include "command.hh"
 
 SimpleCommand::SimpleCommand() {
 	// Create available space for 5 arguments
