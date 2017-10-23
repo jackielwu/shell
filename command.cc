@@ -171,7 +171,7 @@ void Command::execute() {
     exit(1);
   }
 
-  if (_inCounter > 1 || _outCounter > 2) {
+  if (_inCounter > 1 || _outCounter >= 2) {
     printf("Ambiguous output redirect.\n");
     clear();
     prompt();
