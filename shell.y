@@ -262,7 +262,7 @@ void expandWildCards(char *prefix, char *arg) {
             expandWildCards(nprefix,suffix);
           }
         }
-        /*else {
+        else {
           if (nEntries == maxEntries) {
             maxEntries *= 2;
             entries = (char **) realloc(entries, maxEntries *sizeof(char *));
@@ -279,17 +279,17 @@ void expandWildCards(char *prefix, char *arg) {
           else {
             entries[nEntries++] = (argument[0] != '\0')?strdup(argument):strdup(ent->d_name);
           }
-        }*/
+        }
       }
     }
     closedir(dir);
-  }
+  }/*
   else {
     char *preToSend = (char *) malloc(100);
     if (prefix) sprintf(preToSend, "%s%s", prefix, dir);
     else preToSend = strdup(dir);
     if(*suffix) expandWildCards(preToSend, ++suffix);
-  }
+  }*/
 }
 
 
