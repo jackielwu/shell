@@ -1,0 +1,19 @@
+Features that work:
+Part 1
+Ctrl-C
+exit
+Part 2
+environemnt variable expansion- no special cases
+
+tilde expansion
+
+Features that do not work:
+default source file
+wildcarding
+special environment variables (${$})
+edit mode
+history
+variable prompt
+
+Extra Features:
+None
